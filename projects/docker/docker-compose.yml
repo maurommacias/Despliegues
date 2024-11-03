@@ -1,7 +1,7 @@
 services:
   nodered:
     build:
-      context: .
+      context: ./projects/Node-Red  # Ruta al directorio donde está Dockerfile.nodered
       dockerfile: Dockerfile.nodered
     container_name: nodered
     ports:
@@ -12,7 +12,7 @@ services:
 
   influxdb:
     build:
-      context: .
+      context: ./projects/docker  # Ruta al directorio donde está Dockerfile.influxdb
       dockerfile: Dockerfile.influxdb
     container_name: influxdb
     ports:
@@ -27,7 +27,7 @@ services:
 
   grafana:
     build:
-      context: .
+      context: ./projects/docker  # Ruta al directorio donde está Dockerfile.grafana
       dockerfile: Dockerfile.grafana
     container_name: grafana
     ports:
