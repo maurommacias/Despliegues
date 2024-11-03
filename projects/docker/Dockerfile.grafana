@@ -1,0 +1,8 @@
+# Dockerfile.grafana
+FROM grafana/grafana:latest
+
+# Exponer el puerto
+EXPOSE 3000
+
+# Comando por defecto
+CMD ["grafana-server", "-homepath=/usr/share/grafana", "cfg:default.log.mode=console"]

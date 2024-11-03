@@ -1,0 +1,12 @@
+# Dockerfile.nodered
+FROM nodered/node-red:latest
+
+# Configurar el usuario y la configuración si es necesario
+USER root
+RUN npm install -g node-red-contrib-influxdb
+
+# Exponer el puerto
+EXPOSE 1880
+
+# Ejecutar Node-RED
+CMD ["npm", "start", "--", "--userDir", "/data"]

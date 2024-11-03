@@ -1,0 +1,45 @@
+services:
+  nodered:
+    build:
+      context: .
+      dockerfile: Dockerfile.nodered
+    container_name: nodered
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered_data:/data
+    restart: always
+
+  influxdb:
+    build:
+      context: .
+      dockerfile: Dockerfile.influxdb
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=noderd_db
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=admin
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+    restart: always
+
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile.grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    restart: always
+
+volumes:
+  nodered_data:
+  influxdb_data:
+  grafana_data:

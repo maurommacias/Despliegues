@@ -1,0 +1,8 @@
+# Dockerfile.influxdb
+FROM influxdb:latest
+
+# Exponer el puerto
+EXPOSE 8086
+
+# Comando por defecto
+CMD ["influxd"]
