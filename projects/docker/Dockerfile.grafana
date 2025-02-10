@@ -1,5 +1,5 @@
 # Dockerfile.grafana
-FROM grafana/grafana:latest
+FROM grafana/grafana:11.5.1
 
 # Exponer el puerto
 EXPOSE 3000
